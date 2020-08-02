@@ -47,7 +47,7 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 			continue
 		}
 
-		if isNewString(data[i]) {
+		if isColon(data[i]) {
 			data = data[i+1:]
 			break
 		}
@@ -80,6 +80,14 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 
 	return data
 
+}
+
+func isColon(symbol byte) bool {
+	if symbol == 58 {
+		return true
+	}
+
+	return false
 }
 
 func isSpace(symbol byte) bool {
