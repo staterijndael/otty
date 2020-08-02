@@ -2,12 +2,12 @@ package otty
 
 import "github.com/Oringik/otty/handlers"
 
-// GetRoute returns route handler
-func (otty *Otty) GetRoute() *handlers.Route {
+// Route returns route handler
+func (otty *Otty) Route() *handlers.Route {
 	return otty.Handlers["Route"].(*handlers.Route)
 }
 
-// GetData returns data handler
-func (otty *Otty) GetData() *handlers.Data {
+// Data returns data handler
+func (otty *Otty) Data() *handlers.Data {
 	return otty.Handlers["Data"].(*handlers.Data)
 }
