@@ -12,7 +12,9 @@ type Otty struct {
 
 // New returns pointer to new otty structure
 func New() *Otty {
-	return &Otty{}
+	return &Otty{
+		Handlers: make(map[string]handlers.Handler),
+	}
 }
 
 // ParseOtty parsing any data and return structure with ready handlers and raw data
