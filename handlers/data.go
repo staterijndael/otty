@@ -11,8 +11,8 @@ func (data *Data) GetName() string {
 	return string(data.Name)
 }
 
-// GetData returns bytes array of data for this handler
-func (data *Data) GetData() []byte {
+// GetValue returns bytes array of data for this handler
+func (data *Data) GetValue() []byte {
 	return data.Data
 }
 
@@ -21,7 +21,7 @@ func (data *Data) SetName(name []byte) {
 	data.Name = name
 }
 
-// SetData set data for data
-func (data *Data) SetData(value []byte) {
+// SetValue set data for data
+func (data *Data) SetValue(value []byte) {
 	data.Data = value
 }

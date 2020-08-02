@@ -11,8 +11,8 @@ func (route *Route) GetName() string {
 	return string(route.Name)
 }
 
-// GetData returns bytes array of data for this handler
-func (route *Route) GetData() []byte {
+// GetValue returns bytes array of data for this handler
+func (route *Route) GetValue() []byte {
 	return route.Data
 }
 
@@ -21,7 +21,7 @@ func (route *Route) SetName(name []byte) {
 	route.Name = name
 }
 
-// SetData set data for route
-func (route *Route) SetData(value []byte) {
+// SetValue set data for route
+func (route *Route) SetValue(value []byte) {
 	route.Data = value
 }

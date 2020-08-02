@@ -3,9 +3,9 @@ package handlers
 // Handler is a interface for handlers to describe otty
 type Handler interface {
 	GetName() string
-	GetData() []byte
+	GetValue() []byte
 	SetName([]byte)
-	SetData([]byte)
+	SetValue([]byte)
 }
 
 // InitHandlers initialize basic handlers

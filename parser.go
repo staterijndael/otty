@@ -85,7 +85,7 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 
 	// Set name and data for found handler
 	handler.SetName(name)
-	handler.SetData(value)
+	handler.SetValue(value)
 
 	return data
 
