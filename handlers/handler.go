@@ -13,18 +13,18 @@ func InitHandlers() map[string]Handler {
 	routeHandler := &Route{Name: []byte("Route")}
 	dataHandler := &Data{Name: []byte("Data")}
 
-	var handlers map[string]Handler
+	var handlersToReturn map[string]Handler
 
-	handlers[routeHandler.GetName()] = routeHandler
-	handlers[dataHandler.GetName()] = dataHandler
+	handlersToReturn[routeHandler.GetName()] = routeHandler
+	handlersToReturn[dataHandler.GetName()] = dataHandler
 
-	return handlers
+	return handlersToReturn
 }
 
 // FindHandlerByName returns handler which name is equal
-func FindHandlerByName(handlers map[string]Handler, name string) Handler {
-	if handlers[name] != nil {
-		return handlers[name]
+func FindHandlerByName(handlersIn map[string]Handler, name string) Handler {
+	if handlersIn[name] != nil {
+		return handlersIn[name]
 	}
 
 	return nil
