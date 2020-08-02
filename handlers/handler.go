@@ -25,7 +25,6 @@ func InitHandlers() []Handler {
 
 // FindHandlerByName returns handler which name is equal
 func FindHandlerByName(handlers []Handler, name string) Handler {
-	fmt.Println(handlers)
 	for _, handler := range handlers {
 		if handler.GetName() == name {
 			return handler
