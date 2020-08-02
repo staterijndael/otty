@@ -1,6 +1,6 @@
 package otty
 
-import "github.com/Oringik/Otty/handlers"
+import "github.com/Oringik/otty/handlers"
 
 // Otty ...
 type Otty struct {
