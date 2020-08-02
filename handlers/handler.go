@@ -1,5 +1,7 @@
 package handlers
 
+import "fmt"
+
 // Handler is a interface for handlers to describe otty
 type Handler interface {
 	GetName() string
@@ -23,6 +25,7 @@ func InitHandlers() []Handler {
 
 // FindHandlerByName returns handler which name is equal
 func FindHandlerByName(handlers []Handler, name string) Handler {
+	fmt.Println(handlers)
 	for _, handler := range handlers {
 		if handler.GetName() == name {
 			return handler

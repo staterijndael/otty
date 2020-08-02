@@ -1,6 +1,8 @@
 package otty
 
-import "github.com/Oringik/otty/handlers"
+import (
+	"github.com/Oringik/otty/handlers"
+)
 
 // Otty ...
 type Otty struct {
@@ -17,17 +19,24 @@ func New() *Otty {
 func ParseOtty(data []byte) *Otty {
 	otty := New()
 	otty.Handlers = handlers.InitHandlers()
+	otty.RawData = data
+
+	data = otty.ParseHandler(data)
 
 	for i := 0; i < len(data)-1; i++ {
 		if isSpace(data[i]) {
-			i++
 			continue
 		}
 
 		if isNewString(data[i]) {
-			data = otty.ParseHandler(data[i+1:])
-			i = 0
+			if len(data) > i+1 {
+				data = otty.ParseHandler(data[i+1:])
+			}
 		}
+
+		data = otty.ParseHandler(data[i:])
+
+		i = 0
 
 	}
 
@@ -43,7 +52,6 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 	// Parse name of handler
 	for i := 0; i < len(data)-1; i++ {
 		if isSpace(data[i]) {
-			i++
 			continue
 		}
 
@@ -59,7 +67,6 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 	// Parse value of handler
 	for i := 0; i < len(data)-1; i++ {
 		if isSpace(data[i]) {
-			i++
 			continue
 		}
 
@@ -76,7 +83,7 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 
 	// Set name and data for found handler
 	handler.SetName(name)
-	handler.SetData(data)
+	handler.SetData(value)
 
 	return data
 
@@ -91,7 +98,7 @@ func isColon(symbol byte) bool {
 }
 
 func isSpace(symbol byte) bool {
-	if symbol == 32 {
+	if symbol == 32 || symbol == 9 {
 		return true
 	}
 
