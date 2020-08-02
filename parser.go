@@ -7,7 +7,7 @@ import (
 // Otty ...
 type Otty struct {
 	RawData  []byte
-	Handlers []handlers.Handler
+	Handlers map[string]handlers.Handler
 }
 
 // New returns pointer to new otty structure

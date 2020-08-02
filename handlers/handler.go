@@ -1,7 +1,5 @@
 package handlers
 
-import "fmt"
-
 // Handler is a interface for handlers to describe otty
 type Handler interface {
 	GetName() string
@@ -11,24 +9,23 @@ type Handler interface {
 }
 
 // InitHandlers initialize basic handlers
-func InitHandlers() []Handler {
+func InitHandlers() map[string]Handler {
 	routeHandler := &Route{Name: []byte("Route")}
 	dataHandler := &Data{Name: []byte("Data")}
 
-	var handlers []Handler
+	var handlers map[string]Handler
 
-	handlers = append(handlers, routeHandler)
-	handlers = append(handlers, dataHandler)
+	handlers[routeHandler.GetName()] = routeHandler
+	handlers[dataHandler.GetName()] = dataHandler
 
 	return handlers
 }
 
 // FindHandlerByName returns handler which name is equal
-func FindHandlerByName(handlers []Handler, name string) Handler {
-	for _, handler := range handlers {
-		if handler.GetName() == name {
-			return handler
-		}
+func FindHandlerByName(handlers map[string]Handler, name string) Handler {
+	if handlers[name] != nil {
+		return handlers[name]
 	}
+
 	return nil
 }
