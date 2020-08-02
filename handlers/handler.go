@@ -14,6 +14,7 @@ func InitHandlers() map[string]Handler {
 	dataHandler := &Data{Name: []byte("Data")}
 
 	var handlersToReturn map[string]Handler
+	handlersToReturn = make(map[string]Handler)
 
 	handlersToReturn[routeHandler.GetName()] = routeHandler
 	handlersToReturn[dataHandler.GetName()] = dataHandler

@@ -23,8 +23,6 @@ func ParseOtty(data []byte) *Otty {
 	otty.Handlers = handlers.InitHandlers()
 	otty.RawData = data
 
-	data = otty.ParseHandler(data)
-
 	for i := 0; i < len(data)-1; i++ {
 		if isSpace(data[i]) {
 			continue
@@ -33,11 +31,13 @@ func ParseOtty(data []byte) *Otty {
 		if isNewString(data[i]) {
 			if len(data) > i+1 {
 				data = otty.ParseHandler(data[i+1:])
+				i = 0
+
+				continue
 			}
 		}
 
 		data = otty.ParseHandler(data[i:])
-
 		i = 0
 
 	}
