@@ -1,7 +1,7 @@
 # Otty
 Transfer protocol with routing
 ## Basic usage
-```
+```go
 	data := []byte(
 		`Data:{"someKey":"someValue"}
 	Route:auth
