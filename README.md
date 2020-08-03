@@ -10,8 +10,8 @@ Transfer protocol with routing
 	ottyStruct := otty.ParseOtty(data)
 
 	ottyStruct.CreateEndpoint("auth", func(a ...interface{}) interface{} {
-		for i := 0; i < len(a[0].([]interface{})); i++ {
-			fmt.Println(a[0].([]interface{})[i])
+		for i := 0; i < len(otty.BasicIterator(a)); i++ {
+			fmt.Println(otty.BasicIterator(a)[i])
 		}
 		return nil
 
