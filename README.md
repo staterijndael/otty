@@ -19,4 +19,4 @@ Transfer protocol with routing
 
 	ottyStruct.ResolveEndpoint(ottyStruct.Route().GetValue(), "value1", "value2", "value3")
   ```
-  In this example we just parsing our data, after we creating endpoint with name 'auth' and function that accept any arguments, after we resolving endpoint by route name in data we parsed and call function resolved in function CreateEndpoint that print all accepted arguments
+In this example we are parsing our data. As you can see we are creating endpoint with name 'auth' and function that accepts any arguments, after we are resolving endpoint by route name in data that we parsed and call function resolved in function CreateEndpoint which prints all accepted arguments.
