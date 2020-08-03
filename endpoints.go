@@ -15,3 +15,8 @@ func (otty *Otty) ResolveEndpoint(endpoint []byte, args ...interface{}) interfac
 	return returnValue
 
 }
+
+// BasicIterator returns basic iterator
+func BasicIterator(a ...interface{}) []interface{} {
+	return a[0].([]interface{})
+}
