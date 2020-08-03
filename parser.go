@@ -8,6 +8,7 @@ import (
 type Otty struct {
 	RawData  []byte
 	Handlers map[string]handlers.Handler
+	Endpoint map[string]func(...interface{}) interface{}
 }
 
 // New returns pointer to new otty structure
