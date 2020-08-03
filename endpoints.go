@@ -10,6 +10,9 @@ func (otty *Otty) ResolveEndpoint(endpoint []byte, data []byte) interface{} {
 	endpointString := string(endpoint)
 
 	functionToCall := otty.Endpoints[endpointString]
+	if functionToCall == nil {
+		return nil
+	}
 
 	returnValue := functionToCall(data)
 	return returnValue
