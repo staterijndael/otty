@@ -30,6 +30,10 @@ func ParseOtty(data []byte) *Otty {
 			continue
 		}
 
+		if isEnd(data[i]) {
+			break
+		}
+
 		if isNewString(data[i]) {
 			if len(data) > i+1 {
 				data = otty.ParseHandler(data[i+1:])
@@ -59,6 +63,10 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 			continue
 		}
 
+		if isEnd(data[i]) {
+			break
+		}
+
 		if isColon(data[i]) {
 			data = data[i+1:]
 			break
@@ -72,6 +80,10 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 	for i := 0; i < len(data)-1; i++ {
 		if isSpace(data[i]) {
 			continue
+		}
+
+		if isEnd(data[i]) {
+			break
 		}
 
 		if isNewString(data[i]) {
@@ -95,6 +107,14 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 
 func isColon(symbol byte) bool {
 	if symbol == 58 {
+		return true
+	}
+
+	return false
+}
+
+func isEnd(symbol byte) bool {
+	if symbol == 0 {
 		return true
 	}
 
