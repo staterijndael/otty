@@ -31,6 +31,7 @@ func ParseOtty(data []byte) *Otty {
 		}
 
 		if isEnd(data[i]) {
+			data = []byte{}
 			break
 		}
 
@@ -64,6 +65,7 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 		}
 
 		if isEnd(data[i]) {
+			data = []byte{}
 			break
 		}
 
@@ -83,6 +85,7 @@ func (otty *Otty) ParseHandler(data []byte) []byte {
 		}
 
 		if isEnd(data[i]) {
+			data = []byte{}
 			break
 		}
 
