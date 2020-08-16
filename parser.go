@@ -20,8 +20,7 @@ func New() *Otty {
 }
 
 // ParseOtty parsing any data and return structure with ready handlers and raw data
-func ParseOtty(data []byte) *Otty {
-	otty := New()
+func (otty *Otty) ParseOtty(data []byte) {
 	otty.Handlers = handlers.InitHandlers()
 	otty.RawData = data
 
@@ -49,7 +48,6 @@ func ParseOtty(data []byte) *Otty {
 
 	}
 
-	return otty
 }
 
 // ParseHandler parsing handlers for otty structure
