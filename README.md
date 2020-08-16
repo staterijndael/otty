@@ -7,7 +7,9 @@ Transfer protocol with routing
 	Route:auth
 	`)
 
-	ottyStruct := otty.ParseOtty(data)
+	ottyStruct := otty.New()
+
+	ottyStruct.ParseOtty(data)
 
 	ottyStruct.CreateEndpoint("auth", func(a []byte) interface{} {
 		fmt.Println(string(a))
