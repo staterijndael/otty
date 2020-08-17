@@ -6,7 +6,6 @@ import (
 
 // Otty ...
 type Otty struct {
-	RawData   []byte
 	Handlers  map[string]handlers.Handler
 	Endpoints map[string]func([]byte)
 }
@@ -22,7 +21,6 @@ func New() *Otty {
 // ParseOtty parsing any data and return structure with ready handlers and raw data
 func (otty *Otty) ParseOtty(data []byte) {
 	otty.Handlers = handlers.InitHandlers()
-	otty.RawData = data
 
 	for i := 0; i < len(data)-1; i++ {
 		if isSpace(data[i]) {
