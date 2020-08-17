@@ -1,20 +1,20 @@
 package otty
 
 // CreateEndpoint creates endpoint for call function by this endpoint after
-func (otty *Otty) CreateEndpoint(endpoint string, function func([]byte) interface{}) {
+func (otty *Otty) CreateEndpoint(endpoint string, function func([]byte)) {
 	otty.Endpoints[endpoint] = function
 }
 
 // ResolveEndpoint call function of endpoint by endpoint name
-func (otty *Otty) ResolveEndpoint(endpoint []byte, data []byte) interface{} {
+func (otty *Otty) ResolveEndpoint(endpoint []byte, data []byte) {
 	endpointString := string(endpoint)
 
 	functionToCall := otty.Endpoints[endpointString]
 	if functionToCall == nil {
-		return nil
+		return
 	}
 
-	returnValue := functionToCall(data)
-	return returnValue
+	functionToCall(data)
+	return
 
 }

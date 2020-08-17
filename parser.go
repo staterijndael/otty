@@ -8,14 +8,14 @@ import (
 type Otty struct {
 	RawData   []byte
 	Handlers  map[string]handlers.Handler
-	Endpoints map[string]func([]byte) interface{}
+	Endpoints map[string]func([]byte)
 }
 
 // New returns pointer to new otty structure
 func New() *Otty {
 	return &Otty{
 		Handlers:  make(map[string]handlers.Handler),
-		Endpoints: make(map[string]func([]byte) interface{}),
+		Endpoints: make(map[string]func([]byte)),
 	}
 }
 
