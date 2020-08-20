@@ -1,6 +1,8 @@
 package otty
 
 import (
+	"context"
+
 	"github.com/Oringik/otty/handlers"
 )
 
@@ -8,6 +10,7 @@ import (
 type Otty struct {
 	Handlers  map[string]handlers.Handler
 	Endpoints map[string]func([]byte)
+	Ctx       context.Context
 }
 
 // New returns pointer to new otty structure
@@ -19,8 +22,9 @@ func New() *Otty {
 }
 
 // ParseOtty parsing any data and return structure with ready handlers and raw data
-func (otty *Otty) ParseOtty(data []byte) {
+func (otty *Otty) ParseOtty(ctx context.Context, data []byte) {
 	otty.Handlers = handlers.InitHandlers()
+	otty.Ctx = ctx
 
 	for i := 0; i < len(data)-1; i++ {
 		if isSpace(data[i]) {
